@@ -76,9 +76,10 @@ let avePos = [];
 function selectYear() {
 
 	let container = document.querySelector(".container");
-	axios.get('http://data.nba.net/data/10s/prod/v1/' + document.querySelector("#year").value + '/players.json').then(aaa => { 
+	fetch('http://data.nba.net/data/10s/prod/v1/' + document.querySelector("#year").value + '/players.json').then((data) => {return data.json()}).then(data => { 
 		//buildGallery(aaa.data.league.standard, container); 
-		res =  aaa.data.league.standard;
+		console.log(data);
+		res =  data.league.standard;
 		getPositions();
 
 	});
